@@ -1,1 +1,70 @@
-<p>credits works!</p>
+<mat-card>
+  <mat-card-title>Gestion des crédits</mat-card-title>
+  <form [formGroup]="creditForm" (ngSubmit)="addCredit()" style="margin-bottom: 16px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Date Demande</mat-label>
+      <input matInput formControlName="dateDemande" type="date">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Statut</mat-label>
+      <input matInput formControlName="statut">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Montant</mat-label>
+      <input matInput formControlName="montant" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Durée Remboursement</mat-label>
+      <input matInput formControlName="dureeRemboursement" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Taux Intérêt</mat-label>
+      <input matInput formControlName="tauxInteret" type="number">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Client ID</mat-label>
+      <input matInput formControlName="clientId" type="number">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!creditForm.valid">Ajouter</button>
+  </form>
+  <table mat-table [dataSource]="credits" class="mat-elevation-z8" style="width: 100%;">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let credit"> {{credit.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dateDemande">
+      <th mat-header-cell *matHeaderCellDef> Date Demande </th>
+      <td mat-cell *matCellDef="let credit"> {{credit.dateDemande}} </td>
+    </ng-container>
+    <ng-container matColumnDef="statut">
+      <th mat-header-cell *matHeaderCellDef> Statut </th>
+      <td mat-cell *matCellDef="let credit"> {{credit.statut}} </td>
+    </ng-container>
+    <ng-container matColumnDef="montant">
+      <th mat-header-cell *matHeaderCellDef> Montant </th>
+      <td mat-cell *matCellDef="let credit"> {{credit.montant}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dureeRemboursement">
+      <th mat-header-cell *matHeaderCellDef> Durée </th>
+      <td mat-cell *matCellDef="let credit"> {{credit.dureeRemboursement}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tauxInteret">
+      <th mat-header-cell *matHeaderCellDef> Taux </th>
+      <td mat-cell *matCellDef="let credit"> {{credit.tauxInteret}} </td>
+    </ng-container>
+    <ng-container matColumnDef="clientId">
+      <th mat-header-cell *matHeaderCellDef> Client </th>
+      <td mat-cell *matCellDef="let credit"> {{credit.clientId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let credit">
+        <button mat-icon-button color="warn" (click)="deleteCredit(credit.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

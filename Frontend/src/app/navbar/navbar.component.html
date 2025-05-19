@@ -5,13 +5,28 @@
     Home
   </button>
 
-  <button mat-button [matMenuTriggerFor]="customerMenu">
+  <button mat-button [matMenuTriggerFor]="clientsMenu">
     <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
-    Customers
+    Clients
   </button>
-  <mat-menu #customerMenu>
-    <button mat-menu-item routerLink="/admin/customers" disableRipple>All customers</button>
-    <button mat-menu-item *ngIf="authService.roles.includes('ADMIN')" disableRipple>New customer</button>
+  <mat-menu #clientsMenu>
+    <button mat-menu-item routerLink="/admin/clients" disableRipple>Clients</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="creditsMenu">
+    <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+    Credits
+  </button>
+  <mat-menu #creditsMenu>
+    <button mat-menu-item routerLink="/admin/credits" disableRipple>Credits</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="remboursementsMenu">
+    <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+    Remboursements
+  </button>
+  <mat-menu #remboursementsMenu>
+    <button mat-menu-item routerLink="/admin/remboursements" disableRipple>Remboursements</button>
   </mat-menu>
 
   <span class="navbar-spacer"></span>
