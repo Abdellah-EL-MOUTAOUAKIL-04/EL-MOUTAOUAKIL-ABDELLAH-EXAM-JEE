@@ -12,7 +12,8 @@ public class Remboursement {
     private Long id;
     private Date date;
     private double montant;
-    private String type;
+    @Enumerated(jakarta.persistence.EnumType.STRING)
+    private ma.abdellahelmoutaouakil.backend.enums.TypeRemboursement type;
 
     @ManyToOne
     private Credit credit;

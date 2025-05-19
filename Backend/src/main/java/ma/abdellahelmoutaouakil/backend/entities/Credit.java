@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.Date;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @SuperBuilder
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_credit")
@@ -14,7 +15,8 @@ public abstract class Credit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date dateDemande;
-    private String statut;
+    @Enumerated(EnumType.STRING)
+    private ma.abdellahelmoutaouakil.backend.enums.StatutCredit statut;
     private Date dateAcceptation;
     private double montant;
     private int dureeRemboursement;
