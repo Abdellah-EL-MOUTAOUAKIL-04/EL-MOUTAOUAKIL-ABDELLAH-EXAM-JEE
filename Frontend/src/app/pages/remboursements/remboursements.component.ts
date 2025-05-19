@@ -12,6 +12,7 @@ export class RemboursementsComponent implements OnInit {
   remboursements: Remboursement[] = [];
   displayedColumns: string[] = ['id', 'date', 'montant', 'type', 'creditId', 'actions'];
   remboursementForm: FormGroup;
+  filterCreditId: number | null = null;
 
   constructor(private remboursementService: RemboursementService, private fb: FormBuilder) {
     this.remboursementForm = this.fb.group({
@@ -44,5 +45,11 @@ export class RemboursementsComponent implements OnInit {
 
   deleteRemboursement(id: number) {
     this.remboursementService.deleteRemboursement(id).subscribe(() => this.loadRemboursements());
+  }
+
+  findRemboursementsByCredit() {
+    if (this.filterCreditId) {
+      this.remboursementService.getRemboursementsByCredit(this.filterCreditId).subscribe(data => this.remboursements = data);
+    }
   }
 }

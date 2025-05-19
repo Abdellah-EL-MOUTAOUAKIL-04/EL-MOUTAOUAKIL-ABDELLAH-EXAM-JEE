@@ -1,5 +1,13 @@
 <mat-card>
   <mat-card-title>Gestion des remboursements</mat-card-title>
+  <div style="margin-bottom: 16px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Filtrer par Crédit ID</mat-label>
+      <input matInput type="number" [(ngModel)]="filterCreditId" name="filterCreditId">
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="findRemboursementsByCredit()">Filtrer</button>
+    <button mat-button (click)="loadRemboursements()">Réinitialiser</button>
+  </div>
   <form [formGroup]="remboursementForm" (ngSubmit)="addRemboursement()" style="margin-bottom: 16px;">
     <mat-form-field appearance="outline">
       <mat-label>Date</mat-label>

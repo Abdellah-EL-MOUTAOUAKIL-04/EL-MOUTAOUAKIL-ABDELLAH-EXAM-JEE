@@ -30,4 +30,8 @@ export class RemboursementService {
   deleteRemboursement(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getRemboursementsByCredit(creditId: number): Observable<Remboursement[]> {
+    return this.http.get<Remboursement[]>(this.apiUrl + '/by-credit/' + creditId);
+  }
 }

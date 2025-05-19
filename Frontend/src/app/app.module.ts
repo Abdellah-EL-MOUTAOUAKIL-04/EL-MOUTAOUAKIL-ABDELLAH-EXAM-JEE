@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatCard, MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInput, MatInputModule} from '@angular/material/input';
 import {MatButton, MatButtonModule, MatIconButton} from '@angular/material/button';
@@ -48,7 +48,8 @@ import {appHttpInterceptor} from './interceptors/app-http.interceptor';
     MatButtonModule,
     MatToolbarModule,
     MatMenuTrigger,
-    MatMenuModule
+    MatMenuModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(withInterceptors([appHttpInterceptor])),

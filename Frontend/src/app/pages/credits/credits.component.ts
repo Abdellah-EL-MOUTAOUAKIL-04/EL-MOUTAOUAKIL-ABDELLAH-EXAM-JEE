@@ -12,6 +12,7 @@ export class CreditsComponent implements OnInit {
   credits: Credit[] = [];
   displayedColumns: string[] = ['id', 'dateDemande', 'statut', 'montant', 'dureeRemboursement', 'tauxInteret', 'clientId', 'actions'];
   creditForm: FormGroup;
+  filterClientId: number | null = null;
 
   constructor(private creditService: CreditService, private fb: FormBuilder) {
     this.creditForm = this.fb.group({
@@ -43,5 +44,11 @@ export class CreditsComponent implements OnInit {
 
   deleteCredit(id: number) {
     this.creditService.deleteCredit(id).subscribe(() => this.loadCredits());
+  }
+
+  findCreditsByClient() {
+    if (this.filterClientId) {
+      this.creditService.getCreditsByClient(this.filterClientId).subscribe(data => this.credits = data);
+    }
   }
 }

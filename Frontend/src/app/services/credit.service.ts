@@ -36,4 +36,8 @@ export class CreditService {
   deleteCredit(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getCreditsByClient(clientId: number): Observable<Credit[]> {
+    return this.http.get<Credit[]>(this.apiUrl + '/by-client/' + clientId);
+  }
 }
