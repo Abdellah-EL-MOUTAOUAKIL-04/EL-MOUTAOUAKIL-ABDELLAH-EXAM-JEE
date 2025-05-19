@@ -21,6 +21,7 @@ import { ClientsComponent } from './pages/clients/clients.component';
 import { CreditsComponent } from './pages/credits/credits.component';
 import { RemboursementsComponent } from './pages/remboursements/remboursements.component';
 import {MatTableModule} from '@angular/material/table';
+import {appHttpInterceptor} from './interceptors/app-http.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,9 @@ import {MatTableModule} from '@angular/material/table';
     MatMenuTrigger,
     MatMenuModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptors([appHttpInterceptor])),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
