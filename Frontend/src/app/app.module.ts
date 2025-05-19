@@ -17,6 +17,9 @@ import {HttpClientModule, provideHttpClient, withInterceptors} from '@angular/co
 import {MatToolbar, MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenu, MatMenuModule, MatMenuTrigger} from '@angular/material/menu';
 import { AdminTemplateComponent } from './admin-template/admin-template.component';
+import { ClientsComponent } from './clients/clients.component';
+import { CreditsComponent } from './pages/credits/credits.component';
+import { RemboursementsComponent } from './pages/remboursements/remboursements.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,10 @@ import { AdminTemplateComponent } from './admin-template/admin-template.componen
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    AdminTemplateComponent
+    AdminTemplateComponent,
+    ClientsComponent,
+    CreditsComponent,
+    RemboursementsComponent
   ],
   imports: [
     BrowserModule,
